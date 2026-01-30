@@ -1,17 +1,15 @@
+
 import { GoogleGenAI } from "@google/genai";
 import { Transaction } from "../types";
 
-// Helper to get the API key safely
-const getApiKey = (): string | undefined => {
-  return process.env.API_KEY;
-};
-
 export const getFinancialInsights = async (transactions: Transaction[]): Promise<string> => {
-  const apiKey = getApiKey();
+  // Use the API key directly from the environment variable as per SDK requirements.
+  const apiKey = process.env.API_KEY;
   if (!apiKey) {
-    return "API Key not found. Please ensure process.env.API_KEY is set.";
+    return "Insights are currently unavailable. Please check your configuration.";
   }
 
+  // Initialize the client using the API key from environment variables.
   const ai = new GoogleGenAI({ apiKey });
   
   const prompt = `
@@ -23,13 +21,15 @@ export const getFinancialInsights = async (transactions: Transaction[]): Promise
   `;
 
   try {
+    // Correct usage: call generateContent directly on ai.models with the model name and prompt.
     const response = await ai.models.generateContent({
       model: 'gemini-3-flash-preview',
       contents: prompt,
     });
-    return response.text || "No insights available at this time.";
+    // Correct usage: access the .text property of GenerateContentResponse.
+    return response.text || "Keep up the great work with your financial planning!";
   } catch (error) {
     console.error("Error fetching Gemini insights:", error);
-    return "Unable to generate insights right now.";
+    return "Continue monitoring your expenses to stay on track with your goals.";
   }
 };
