@@ -1,6 +1,5 @@
-
 import React from 'react';
-import { Phone, PhoneIncoming, PhoneOutgoing, Wallet } from 'lucide-react';
+import { Phone, PhoneIncoming, PhoneOutgoing, Wallet, LucideIcon } from 'lucide-react';
 import { PieChart, Pie, Cell, ResponsiveContainer } from 'recharts';
 
 const CallStatistics: React.FC = () => {
@@ -10,17 +9,16 @@ const CallStatistics: React.FC = () => {
     { name: 'Rest', value: 100 - conversionRate },
   ];
 
-  const StatCard = ({ title, value, icon, trend, colorClass = "text-brand-blue" }: { title: string, value: string, icon: React.ReactNode, trend?: string, colorClass?: string }) => (
+  const StatCard = ({ title, value, icon: Icon, trend, colorClass = "text-brand-blue" }: { title: string, value: string, icon: LucideIcon, trend?: string, colorClass?: string }) => (
     <div className="bg-dark-card rounded-[2.2rem] p-6 flex flex-col justify-between h-44 relative overflow-hidden group hover:bg-[#1C1E2D] border border-white/5 transition-all duration-500 hover:translate-y-[-4px] hover:shadow-2xl hover:shadow-black/40">
       {/* Background Decorative Icon */}
       <div className={`absolute -top-2 -right-2 p-6 opacity-[0.03] group-hover:opacity-[0.08] transition-opacity duration-500 scale-150 ${colorClass}`}>
-         {/* Fix: Casting icon to React.ReactElement<any> to allow the 'size' property when cloning the lucide icon */}
-         {React.cloneElement(icon as React.ReactElement<any>, { size: 80 })}
+         <Icon size={80} />
       </div>
       
       <div className="z-10 relative">
         <div className={`w-11 h-11 rounded-2xl bg-white/5 flex items-center justify-center mb-4 ${colorClass} border border-white/5 group-hover:scale-110 transition-transform duration-300`}>
-            {icon}
+            <Icon size={20} />
         </div>
         <h3 className="text-gray-500 text-[11px] font-bold uppercase tracking-widest mb-1">{title}</h3>
         <div className="flex items-end gap-2">
@@ -40,7 +38,7 @@ const CallStatistics: React.FC = () => {
       <StatCard 
         title="Gesamtanrufe" 
         value="12.450" 
-        icon={<Phone className="w-5 h-5" />} 
+        icon={Phone} 
         trend="+12%"
       />
       
@@ -75,7 +73,7 @@ const CallStatistics: React.FC = () => {
       <StatCard 
         title="Eingehend" 
         value="8.240" 
-        icon={<PhoneIncoming className="w-5 h-5" />} 
+        icon={PhoneIncoming} 
         trend="+5%"
         colorClass="text-cyan-400"
       />
@@ -83,14 +81,14 @@ const CallStatistics: React.FC = () => {
       <StatCard 
         title="Ausgehend" 
         value="4.210" 
-        icon={<PhoneOutgoing className="w-5 h-5" />} 
+        icon={PhoneOutgoing} 
         colorClass="text-purple-400"
       />
       
       <StatCard 
         title="Ø Kosten" 
         value="€ 1,45" 
-        icon={<Wallet className="w-5 h-5" />} 
+        icon={Wallet} 
         trend="-2%"
         colorClass="text-emerald-400"
       />
