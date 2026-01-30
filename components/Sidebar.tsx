@@ -25,12 +25,12 @@ const Sidebar: React.FC<SidebarProps> = ({ activeTab, setActiveTab }) => {
 
   return (
     <div className="w-64 h-screen bg-dark-bg border-r border-white/5 flex flex-col fixed left-0 top-0 overflow-y-auto z-50 scrollbar-hide">
-      <div className="py-12 flex items-center justify-center px-4">
-        {/* MIRTELI Logo - Significantly bigger as requested */}
+      <div className="py-12 flex items-center justify-center px-6">
+        {/* MIRTELI Logo - Large High Fidelity Image */}
         <img 
             src="https://ympkyaakwveogjcgqqnr.supabase.co/storage/v1/object/public/avatar/mirtelologo.png" 
             alt="MIRTELI" 
-            className="w-full max-w-[210px] object-contain transition-transform duration-500 hover:scale-105"
+            className="w-full max-w-[210px] object-contain transition-all duration-500 hover:scale-[1.03] drop-shadow-2xl"
         />
       </div>
 
@@ -55,7 +55,7 @@ const Sidebar: React.FC<SidebarProps> = ({ activeTab, setActiveTab }) => {
       </nav>
       
       <div className="p-8">
-        <div className="bg-gradient-to-br from-white/5 to-transparent p-4 rounded-2xl border border-white/5">
+        <div className="bg-gradient-to-br from-white/5 to-transparent p-4 rounded-2xl border border-white/5 backdrop-blur-md">
             <div className="text-[10px] text-gray-500 font-bold uppercase tracking-[0.2em] mb-1">
                 System Status
             </div>

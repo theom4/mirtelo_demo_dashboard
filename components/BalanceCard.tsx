@@ -3,7 +3,7 @@ import { ArrowUpRight } from 'lucide-react';
 
 const BalanceCard: React.FC = () => {
   return (
-    <div className="relative overflow-hidden rounded-[2.5rem] bg-gradient-to-br from-[#1A37C8] via-[#0d1d75] to-[#0A0C14] p-8 text-white h-full flex flex-col shadow-2xl shadow-blue-900/30 group border border-white/10">
+    <div className="relative overflow-hidden rounded-[2.5rem] bg-gradient-to-br from-[#1A37C8] via-[#0d1d75] to-[#0A0C14] p-8 text-white h-full flex flex-col shadow-2xl shadow-blue-900/40 group border border-white/10">
       {/* Decorative Glow Elements */}
       <div className="absolute -top-12 -right-12 w-64 h-64 bg-blue-400 rounded-full blur-[100px] opacity-20 group-hover:opacity-40 transition-opacity duration-700"></div>
       <div className="absolute -bottom-24 -left-24 w-48 h-48 bg-cyan-500 rounded-full blur-[80px] opacity-10"></div>
@@ -32,7 +32,7 @@ const BalanceCard: React.FC = () => {
               <span>USD Wallet</span>
           </div>
           <span>•</span>
-          <span>Verifiziert</span>
+          <span className="text-brand-accent">Verifiziert</span>
       </div>
     </div>
   );
