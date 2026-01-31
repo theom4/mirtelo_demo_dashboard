@@ -1,35 +1,60 @@
 import React from 'react';
-import { ArrowUpRight } from 'lucide-react';
+import { ArrowUpRight, CreditCard, Wifi } from 'lucide-react';
 
 const BalanceCard: React.FC = () => {
   return (
-    <div className="relative overflow-hidden rounded-[2.5rem] bg-gradient-to-br from-[#1E40AF] via-[#111827] to-[#0F111A] p-9 text-white h-full flex flex-col shadow-2xl shadow-blue-900/30 group border border-white/10">
-      {/* Dynamic Ambient Lighting */}
-      <div className="absolute -top-20 -right-20 w-96 h-96 bg-blue-500/15 rounded-full blur-[120px] group-hover:bg-blue-500/25 transition-all duration-1000"></div>
-      <div className="absolute -bottom-32 -left-32 w-80 h-80 bg-cyan-500/10 rounded-full blur-[100px]"></div>
-
+    <div className="relative overflow-hidden rounded-[2.5rem] mesh-gradient p-8 text-white h-full flex flex-col shadow-[0_20px_50px_rgba(0,0,0,0.5)] border border-white/10 group transition-transform duration-500 hover:scale-[1.02]">
+      {/* Dynamic Glass Reflection */}
+      <div className="absolute top-0 left-0 w-full h-full bg-gradient-to-br from-white/10 to-transparent opacity-30 pointer-events-none"></div>
+      
       <div className="flex justify-between items-start z-10 relative">
-        <div>
-          <h3 className="text-blue-100/60 text-[10px] font-black mb-2 tracking-[0.25em] uppercase">Gesparte Minuten</h3>
-          <div className="inline-flex items-center gap-2 bg-green-500/10 text-green-400 px-3.5 py-1.5 rounded-full text-[10px] font-black backdrop-blur-3xl border border-green-500/20 shadow-[0_0_20px_rgba(34,197,94,0.1)]">
-            <ArrowUpRight className="w-3 h-3 stroke-[3px]" />
-            <span>+24.5%</span>
+        <div className="space-y-1.5">
+            <h3 className="text-blue-100/40 text-[10px] font-black tracking-[0.3em] uppercase">Current Balance</h3>
+            <div className="flex items-center gap-2">
+                <h1 className="text-4xl font-black tracking-tighter text-glow flex items-baseline">
+                    <span className="text-blue-200/40 text-2xl mr-1">$</span>
+                    45,090.<span className="text-blue-200/40 text-2xl">80</span>
+                </h1>
+            </div>
+        </div>
+        <div className="flex flex-col items-end gap-3">
+             <div className="inline-flex items-center gap-1.5 bg-green-500/20 text-green-400 px-4 py-1.5 rounded-2xl text-[11px] font-bold border border-green-500/20 backdrop-blur-xl">
+                <ArrowUpRight className="w-3.5 h-3.5 stroke-[3px]" />
+                <span>+16.8%</span>
+            </div>
+            <div className="w-14 h-10 bg-gradient-to-br from-yellow-400/30 to-yellow-600/10 rounded-xl border border-yellow-500/30 flex items-center justify-center backdrop-blur-md overflow-hidden relative shadow-inner">
+                <div className="absolute inset-0 bg-white/5"></div>
+                <div className="w-9 h-7 bg-yellow-400/20 rounded-md relative border border-yellow-400/20">
+                    <div className="absolute inset-x-0 top-1/2 h-[1px] bg-yellow-400/40"></div>
+                    <div className="absolute inset-y-0 left-1/2 w-[1px] bg-yellow-400/40"></div>
+                </div>
+            </div>
+        </div>
+      </div>
+
+      <div className="z-10 mt-auto relative space-y-7">
+          <div className="flex items-end justify-between">
+              <div className="flex flex-col gap-1">
+                  <span className="text-[10px] font-bold text-blue-200/30 uppercase tracking-[0.2em]">Card Holder</span>
+                  <span className="text-base font-bold tracking-widest text-blue-50 drop-shadow-md">ALEX WILLIAMSON</span>
+              </div>
+              <Wifi className="w-6 h-6 text-white/20 rotate-90" />
           </div>
-        </div>
-        <div className="flex items-center gap-2 bg-white/5 backdrop-blur-2xl px-4 py-2.5 rounded-2xl border border-white/10 cursor-pointer hover:bg-white/10 transition-all duration-300 group/btn">
-          <span className="text-[11px] font-bold text-blue-100">Jan 2026</span>
-          <svg className="w-3 h-3 text-blue-100 group-hover/btn:translate-y-0.5 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.5" d="M19 9l-7 7-7-7"></path></svg>
-        </div>
-      </div>
-
-      <div className="z-10 flex-1 flex items-center relative py-6">
-        <h1 className="text-5xl font-black tracking-tighter drop-shadow-[0_10px_10px_rgba(0,0,0,0.5)] flex items-baseline">
-          18,456<span className="opacity-40 text-2xl font-bold ml-2">Min</span>
-        </h1>
-      </div>
-
-      <div className="z-10 flex items-center gap-4 text-xs text-blue-200/60">
-        <span>≈ €7,382 eingespart</span>
+          
+          <div className="flex items-center justify-between pt-2">
+              <div className="flex items-center gap-4">
+                  <div className="flex -space-x-3">
+                      <div className="w-9 h-9 rounded-full bg-blue-600/60 border-2 border-white/10 flex items-center justify-center text-[9px] font-black shadow-xl backdrop-blur-md">USD</div>
+                      <div className="w-9 h-9 rounded-full bg-cyan-500/60 border-2 border-white/10 flex items-center justify-center text-[9px] font-black shadow-xl backdrop-blur-md">BTC</div>
+                  </div>
+                  <span className="text-[10px] font-bold text-blue-200/40 uppercase tracking-[0.2em]">Assets</span>
+              </div>
+              
+              <div className="flex items-center gap-1">
+                  <div className="w-8 h-8 rounded-full bg-red-600/80 shadow-[0_0_15px_rgba(220,38,38,0.5)]"></div>
+                  <div className="w-8 h-8 rounded-full bg-yellow-500/80 -ml-4 shadow-[0_0_15px_rgba(234,179,8,0.5)]"></div>
+              </div>
+          </div>
       </div>
     </div>
   );
