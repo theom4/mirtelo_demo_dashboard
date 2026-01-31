@@ -12,7 +12,8 @@ import {
   MessageSquare,
   Sparkles,
   Volume2,
-  Package
+  Package,
+  User as UserIcon
 } from 'lucide-react';
 
 interface Call {
@@ -30,19 +31,19 @@ interface Call {
 const calls: Call[] = [
   { 
     id: 1, 
-    name: 'Support Anfrage #4092', 
+    name: 'Cristina', 
     number: '+40771074425', 
     type: 'incoming', 
-    duration: '01:13', 
-    date: '31 ian. 2026, 09:47', 
+    duration: '01:36', 
+    date: '31 ian. 2026, 10:07', 
     status: 'Upsell',
-    client_personal_id: '2081',
-    transcription: 'Bună ziua, doamna lulica. Silvia sunt de la TamTrend. Ați plasat o comandă astăzi de cosmetice și voiam să vă confirm. Despre ce e vorba? Am înțeles. Ați comandat cremă naturală pentru drenaj limfatic și picioare ușoare. Da, da, da, da, da, da, da, da. Două cutii am zis care face Ce? Ce? Aha. Mhm. Da, pentru două cutii, prețul total este 98 RON cu livrare gratuită. E în regulă? Da, da, da, am Am constatat și am Perfect. Și adresa de livrare este București, Lacul Ursului 47, sector 6, București. Da, asta e adresa, da. În regulă. O să primiți comanda în două, trei zile lucrătoare. O să vă sune curierul când sosește. Vă dorim o zi frumoasă. E bun, doamnă, că mă dor picioarele de nu mai pot.'
+    client_personal_id: '2087',
+    transcription: 'Bună, vă rog. Bună ziua, doamna Cristina. Silvia sunt de la Vita Domus. Ați plasat o comandă la noi astăzi de trei creme naturale pentru drenaj limfatic și v-am sunat să o confirmăm. Da, da, da. Ăă, Am înțeles. Sigur, are și are efect? Și voiam să confirmăm adresa. Este strada Titu Da, spuneți. Numărul 2, bloc B1, etaj 1, apartament 39. Nu, nu, etaj etajul 9, că acolo am bătut eu un l în loc de 1. Deci, etajul 9. Deci, etaj 9, apartament 39. Da, dar mă sună pe numărul de telefon, da? În regulă. Ați corectat, da? Și în cât timp ajunge? Sigur, am actualizat. Livrarea durează Dar în cât timp ajunge? Spuneți. Între două și trei zile lucrătoare. O să vă sune curierul când ajunge. Da. Să plătești și cu cardul, da? Plata se face cu ramburs, conform comenzii inițiale. Metoda nu se poate modifica la telefon. Da, bine. O să primiți comanda în două-trei zile.'
   },
-  { id: 2, name: 'Verkaufsgespräch - TechSolutions', number: '+49 171 1234567', type: 'outgoing', duration: '05:32', date: 'Heute, 09:15', status: 'Follow-up', client_personal_id: '2082' },
-  { id: 3, name: 'Unbekannter Anrufer', number: '+49 89 234567', type: 'incoming', duration: '00:45', date: 'Gestern, 16:40', status: 'Missed', client_personal_id: '2083' },
-  { id: 4, name: 'Projekt Update - Alpha', number: '+49 30 9876543', type: 'outgoing', duration: '45:12', date: 'Gestern, 14:00', status: 'Completed', client_personal_id: '2084' },
-  { id: 5, name: 'Kundenfeedback', number: '+49 160 5556667', type: 'incoming', duration: '08:19', date: '23. Sep, 11:30', status: 'Resolved', client_personal_id: '2085' },
+  { id: 2, name: 'Lulica', number: '+40771074426', type: 'incoming', duration: '01:13', date: '31 ian. 2026, 09:47', status: 'Upsell', client_personal_id: '2081', transcription: 'Bună ziua, doamna lulica. Silvia sunt de la TamTrend...' },
+  { id: 3, name: 'TechSolutions', number: '+49 171 1234567', type: 'outgoing', duration: '05:32', date: 'Heute, 09:15', status: 'Follow-up', client_personal_id: '2082' },
+  { id: 4, name: 'Unknown', number: '+49 89 234567', type: 'incoming', duration: '00:45', date: 'Gestern, 16:40', status: 'Missed', client_personal_id: '2083' },
+  { id: 5, name: 'Marcus Horizon', number: '+49 160 5556667', type: 'incoming', duration: '08:19', date: '23. Sep, 11:30', status: 'Resolved', client_personal_id: '2085' },
 ];
 
 const CallRecordings: React.FC = () => {
@@ -73,61 +74,65 @@ const CallRecordings: React.FC = () => {
           </button>
         </div>
 
-        {/* Info Grid */}
+        {/* Modal Body */}
         <div className="px-8 pb-8 space-y-8 max-h-[85vh] overflow-y-auto custom-scrollbar">
+          
+          {/* Top Info Grid */}
           <div className="grid grid-cols-2 gap-y-8 gap-x-4">
-            <div className="space-y-1.5">
+            <div className="space-y-2">
               <label className="text-[10px] font-black uppercase tracking-[0.2em] text-gray-500">CLIENT / TELEFON</label>
-              <div className="flex items-center gap-3">
-                <Phone className="w-4 h-4 text-brand-purple" />
-                <span className="text-lg font-bold text-white tracking-tight">{call.number}</span>
+              <div className="flex flex-col gap-1">
+                <div className="flex items-center gap-2">
+                  <UserIcon className="w-4 h-4 text-brand-purple" />
+                  <span className="text-lg font-bold text-white tracking-tight">{call.name}</span>
+                </div>
+                <div className="flex items-center gap-2 pl-6">
+                  <Phone className="w-3.5 h-3.5 text-gray-500" />
+                  <span className="text-sm font-medium text-gray-400">{call.number}</span>
+                </div>
               </div>
             </div>
 
-            <div className="space-y-1.5">
+            <div className="space-y-2">
               <label className="text-[10px] font-black uppercase tracking-[0.2em] text-gray-500">DATĂ & ORĂ</label>
-              <div className="flex items-center gap-3">
+              <div className="flex items-center gap-3 pt-1">
                 <Calendar className="w-4 h-4 text-brand-purple" />
                 <span className="text-lg font-bold text-white tracking-tight">{call.date}</span>
               </div>
             </div>
 
-            <div className="space-y-1.5">
+            <div className="space-y-2">
               <label className="text-[10px] font-black uppercase tracking-[0.2em] text-gray-500">DURATĂ APEL</label>
-              <div className="flex items-center gap-3">
+              <div className="flex items-center gap-3 pt-1">
                 <Clock className="w-4 h-4 text-brand-purple" />
                 <span className="text-lg font-bold text-white tracking-tight">{call.duration}</span>
               </div>
             </div>
 
-            <div className="space-y-1.5">
+            <div className="space-y-2">
               <label className="text-[10px] font-black uppercase tracking-[0.2em] text-gray-500">STATUS CONVERSAȚIE</label>
-              <div>
+              <div className="pt-1">
                 <span className="bg-[#1E2130] text-gray-400 px-3 py-1 rounded-lg text-xs font-bold border border-white/5">
                   {call.status}
                 </span>
               </div>
             </div>
-
-            {/* Added Order Number section explicitly as requested */}
-            <div className="col-span-2 space-y-1.5 pt-2 border-t border-white/5">
-              <label className="text-[10px] font-black uppercase tracking-[0.2em] text-gray-500 flex items-center gap-2">
-                <Package className="w-3 h-3" />
-                NUMĂR COMANDĂ
-              </label>
-              <span className="text-lg font-bold text-brand-accent tracking-widest">{call.client_personal_id}</span>
-            </div>
           </div>
 
-          {/* Audio Player */}
+          {/* Audio Player Section */}
           <div className="bg-[#05070A] rounded-2xl p-6 border border-white/5 relative">
             <div className="flex items-center justify-between mb-4">
-              <h3 className="text-[10px] font-black uppercase tracking-[0.2em] text-gray-500">ASCULTĂ ÎNREGISTRAREA</h3>
-              <span className="text-[10px] font-black uppercase tracking-[0.1em] text-gray-600">ID: {call.client_personal_id}</span>
+              <div className="flex items-center gap-2">
+                <h3 className="text-[10px] font-black uppercase tracking-[0.2em] text-gray-500">ASCULTĂ ÎNREGISTRAREA</h3>
+              </div>
+              <div className="flex items-center gap-1.5 px-3 py-1 bg-white/5 rounded-lg border border-white/5">
+                <Package className="w-3 h-3 text-brand-accent" />
+                <span className="text-[10px] font-black uppercase tracking-[0.1em] text-gray-400">ID COMANDĂ: {call.client_personal_id}</span>
+              </div>
             </div>
             
             <div className="bg-[#161926] rounded-full px-4 py-2 flex items-center gap-4">
-              <button className="w-10 h-10 rounded-full bg-white flex items-center justify-center text-[#0D0F17] shrink-0">
+              <button className="w-10 h-10 rounded-full bg-white flex items-center justify-center text-[#0D0F17] shrink-0 active:scale-95 transition-transform">
                 <Play className="w-4 h-4 fill-current ml-0.5" />
               </button>
               <div className="flex-1 flex items-center gap-3">
@@ -143,13 +148,13 @@ const CallRecordings: React.FC = () => {
             </div>
           </div>
 
-          {/* Transcription */}
+          {/* AI Transcription */}
           <div className="space-y-4">
             <div className="flex items-center gap-2">
               <Sparkles className="w-4 h-4 text-brand-purple animate-pulse" />
               <h3 className="text-[10px] font-black uppercase tracking-[0.2em] text-gray-500">TRANSCRIERE AI</h3>
             </div>
-            <div className="bg-gradient-to-b from-white/[0.03] to-transparent rounded-3xl p-6 border border-white/[0.05] leading-relaxed text-gray-300 text-sm">
+            <div className="bg-gradient-to-b from-white/[0.03] to-transparent rounded-3xl p-6 border border-white/[0.05] leading-relaxed text-gray-300 text-sm italic">
               {call.transcription || "Transcriere indisponibilă pentru acest apel."}
             </div>
           </div>
@@ -163,7 +168,7 @@ const CallRecordings: React.FC = () => {
            </div>
            <button 
              onClick={onClose}
-             className="bg-[#1E2130] hover:bg-[#272935] text-white px-8 py-3 rounded-2xl text-xs font-bold uppercase tracking-widest transition-all border border-white/5 active:scale-95"
+             className="bg-[#1E2130] hover:bg-[#272935] text-white px-8 py-3 rounded-2xl text-xs font-bold uppercase tracking-widest transition-all border border-white/5 active:scale-95 shadow-xl"
            >
              Închide
            </button>
@@ -176,8 +181,8 @@ const CallRecordings: React.FC = () => {
     <div className="h-full flex flex-col gap-6">
       <div className="flex justify-between items-center">
         <div>
-           <h2 className="text-2xl font-bold text-white">Anrufaufzeichnungen</h2>
-           <p className="text-gray-400 text-sm">Archiv aller aufgezeichneten Gespräche.</p>
+           <h2 className="text-2xl font-bold text-white tracking-tight">Anrufaufzeichnungen</h2>
+           <p className="text-gray-400 text-sm">Archiv aller aufgezeichneten Gespräche und AI Transkriptionen.</p>
         </div>
         <div className="flex gap-3">
              <div className="bg-dark-card border border-white/5 rounded-xl px-4 py-2 text-sm text-gray-300">
@@ -231,9 +236,6 @@ const CallRecordings: React.FC = () => {
                               }}
                             >
                                 <Play className="w-4 h-4 fill-white" />
-                            </button>
-                            <button className="w-10 h-10 rounded-full bg-white/5 hover:bg-white/10 flex items-center justify-center text-gray-400 hover:text-white transition-colors">
-                                <Download className="w-4 h-4" />
                             </button>
                         </div>
                     </div>
