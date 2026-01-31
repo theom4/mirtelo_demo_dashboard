@@ -13,7 +13,8 @@ import {
   Sparkles,
   Volume2,
   Package,
-  User as UserIcon
+  User as UserIcon,
+  Hash
 } from 'lucide-react';
 
 interface Call {
@@ -58,13 +59,18 @@ const CallRecordings: React.FC = () => {
       
       <div className="relative w-full max-w-2xl bg-[#0D0F17] rounded-[2rem] shadow-[0_32px_64px_-12px_rgba(0,0,0,0.8)] border border-white/5 overflow-hidden animate-in fade-in zoom-in-95 duration-200">
         
-        {/* Header */}
+        {/* Header with Order Number next to title */}
         <div className="px-8 pt-8 pb-6 flex items-center justify-between">
           <div className="flex items-center gap-3">
             <div className="w-10 h-10 rounded-xl bg-brand-purple/20 flex items-center justify-center text-brand-purple border border-brand-purple/20">
               <MessageSquare className="w-5 h-5" />
             </div>
-            <h2 className="text-xl font-bold text-white tracking-tight">Detalii Înregistrare</h2>
+            <div className="flex items-baseline gap-3">
+              <h2 className="text-xl font-bold text-white tracking-tight">Detalii Înregistrare</h2>
+              <span className="text-xs font-bold text-brand-accent/60 bg-brand-accent/5 px-2 py-0.5 rounded-md border border-brand-accent/10">
+                #{call.client_personal_id}
+              </span>
+            </div>
           </div>
           <button 
             onClick={onClose}
